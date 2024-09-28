@@ -1,10 +1,10 @@
 .nav-header {
-  @apply bg-black p-2 flex items-center w-full h-16 sm:hidden;
+  @apply p-2 flex items-center w-full h-16 sm:hidden;
 
   @apply group-[.is-open]:fixed;
 }
 .nav-body {
-  @apply bg-black p-4 flex flex-col items-center justify-evenly;
+  @apply p-4 flex flex-col items-center justify-evenly;
 
   @apply group-[.is-close]:hidden;
   @apply group-[.is-close]:sm:flex;

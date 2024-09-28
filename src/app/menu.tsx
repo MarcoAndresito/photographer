@@ -10,7 +10,7 @@ export default function Menu({}: {}) {
 
   return (
     <nav className={`group ${class1}`}>
-      <div className="nav-header">
+      <div className="nav-header bg-dark">
         <div className="group-[.is-close]:hidden">Menú</div>
         <Image
           className="group-[.is-open]:hidden h-4"
@@ -27,7 +27,7 @@ export default function Menu({}: {}) {
           alt="Nombre"
         />
         <div
-          className="my-auto ml-auto mr-2 px-2 rounded group-[.is-open]:after:content-['X'] group-[.is-close]:after:content-['+'] after:ml-0.5 shadow shadow-white"
+          className="my-auto ml-auto mr-2 px-2 rounded group-[.is-open]:after:content-['X'] group-[.is-close]:after:content-['+'] after:ml-0.5 shadow shadow-slate-50"
           onClick={(e) => {
             if (class1 == "is-open") {
               setClass1("is-close");
@@ -37,7 +37,7 @@ export default function Menu({}: {}) {
           }}
         ></div>
       </div>
-      <div className="nav-body">
+      <div className="nav-body bg-dark">
         <a className="contents" href="/">
           <Image
             className="max-w-32 sm:hidden"
@@ -47,7 +47,7 @@ export default function Menu({}: {}) {
             alt="Logo"
           />
         </a>
-        <hr className="w-full border-2 border-white rounded-full sm:hidden" />
+        <hr className="w-full border-2 border-slate-50 rounded-full sm:hidden" />
         <a href="/servicios">Servicios</a>
         <a href="/proyectos">Proyectos</a>
         <a href="/blog">Mi blog</a>
