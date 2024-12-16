@@ -51,6 +51,8 @@ export default function Menu({}: {}) {
         <a href="/servicios">Servicios</a>
         <a href="/proyectos">Proyectos</a>
         <a href="/blog">Mi blog</a>
+        <a href="/login">Sign in</a>
+        <a href="/signup">Sign up</a>
       </div>
     </nav>
   );
