@@ -1,19 +1,35 @@
-"use server"; // 👈 esto fuerza a que se ejecute solo en el servidor
+"use server";
 
-import { Sequelize } from "sequelize";
+import type { Sequelize } from "sequelize";
 
-console.log("DB_NAME", process.env.DB_NAME);
+let sequelize: Sequelize | null = null;
 
-const sequelize = new Sequelize("db_photographer", "sa", "123456789", {
-  host: "ONPMVASQUEZ",
-  dialect: "mssql",
-  logging: process.env.NODE_ENV === "development" ? console.log : false,
-  dialectOptions: {
-    options: {
-      encrypt: true,
-      trustServerCertificate: true,
-    },
-  },
-});
-
-export default sequelize;
+export async function getSequelize() {
+  if (sequelize) return sequelize;
+  const { Sequelize } = await import("sequelize");
+  const tedious = await import("tedious");
+  sequelize = new Sequelize(
+    process.env.DB_NAME || "",
+    process.env.DB_USER || "",
+    process.env.DB_PASS || "",
+    {
+      host: process.env.DB_HOST,
+      dialect: (process.env.DB_DIALECT as any) || "mssql",
+      dialectModule: tedious,
+      logging: process.env.NODE_ENV === "development" ? console.log : false,
+      dialectOptions: {
+        options: {
+          encrypt: true,
+          trustServerCertificate: true,
+        },
+      },
+      pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+      },
+    }
+  );
+  return sequelize;
+}

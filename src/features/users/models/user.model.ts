@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../../../db/config/database";
+import { getSequelize } from "../../../db/config/database";
 
 export default class User extends Model {
   declare id: number;
@@ -17,5 +17,5 @@ User.init(
     name: DataTypes.STRING,
     email: DataTypes.STRING,
   },
-  { sequelize, tableName: "users", timestamps: true }
+  { sequelize: await getSequelize(), tableName: "users", timestamps: true }
 );

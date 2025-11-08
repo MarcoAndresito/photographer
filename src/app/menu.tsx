@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 
-import "./styles.css";
 import Image from "next/image";
+import Link from "next/link";
+import "./styles.css";
 
 export default function Menu({}: {}) {
   const [class1, setClass1] = useState<"is-close" | "is-open">("is-close");
@@ -38,7 +39,7 @@ export default function Menu({}: {}) {
         ></div>
       </div>
       <div className="nav-body bg-dark">
-        <a className="contents" href="/">
+        <Link className="contents" href="/">
           <Image
             className="max-w-32 sm:hidden"
             src="Logo Completo.svg"
@@ -46,7 +47,7 @@ export default function Menu({}: {}) {
             height={150}
             alt="Logo"
           />
-        </a>
+        </Link>
         <hr className="w-full border-2 border-slate-50 rounded-full sm:hidden" />
         <a href="/servicios">Servicios</a>
         <a href="/proyectos">Proyectos</a>
